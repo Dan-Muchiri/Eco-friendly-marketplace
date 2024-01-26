@@ -246,6 +246,12 @@ input[type="checkbox"] {
     padding: 10px;
 }
 
+#user-reviews h2{
+    font-size: 17px;
+    color: #3b6c52;
+}
+
+
 .review {
     background-color: #fff;
     border-radius: 8px;
@@ -262,7 +268,7 @@ input[type="checkbox"] {
 }
 
 .rating h2 {
-    font-size: 16px;
+    font-size: 15px;
     margin-bottom: 5px;
 }
 
@@ -291,9 +297,10 @@ input[type="checkbox"] {
 /* Educational Content Styles */
 #educational-content {
     padding: 20px;
+    padding-top: 10px;
     background-color: #d2edd9;
     border-radius: 10px;
-    margin-top: 20px;
+    margin-top: 0px;
 }
 
 .article {
@@ -308,7 +315,7 @@ input[type="checkbox"] {
 .article h2 {
     color: #3b6c52;
     margin-bottom: 10px;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .article h3{
@@ -349,6 +356,23 @@ input[type="checkbox"] {
     height: 350px;
 }
 
+.product-card:hover {
+    background-color: #f2f2f2;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.product-card:active {
+    background-color: #567f64;
+    transition: background-color 0.3s ease;
+}
+
+.product-card.button-clicked {
+    background-color: #567f64;
+    transition: background-color 0.3s ease;
+}
+
+
 .product-card img {
     border-radius: 8px;
     max-width: 100%;
@@ -386,7 +410,8 @@ button {
 }
 
 button:hover {
-    background-color: #567f64;
+    background-color: #fff;
+    color:#3b6c52;
 }
 
 

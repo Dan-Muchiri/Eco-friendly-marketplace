@@ -24,7 +24,7 @@
         "productionProcess": "Made from sustainable bamboo",
         "url": "images/bamboo utensils.jpeg",
         "category": "Kitchen",
-        "rating": 4.6
+        "rating": 4.0
       },
       {
         "id": 3,
@@ -37,7 +37,7 @@
         "productionProcess": "Sustainably sourced from Fair Trade farmers",
         "url": "images/mango.jpeg",
         "category": "Fruits",
-        "rating": 4.6
+        "rating": 4.5
       },
       {
         "id": 4,
@@ -50,7 +50,7 @@
         "productionProcess": "Harnesses solar energy for charging",
         "url": "images/solar charger.jpeg",
         "category": "Electronics",
-        "rating": 4.7
+        "rating": 3.5
       },
       {
         "id": 5,
@@ -63,7 +63,7 @@
         "productionProcess": "Designed with recyclable materials",
         "url": "images/smart thermostart.jpeg",
         "category": "Electronics",
-        "rating": 4.8
+        "rating": 4.5
       },
       {
         "id": 6,
@@ -76,7 +76,7 @@
         "productionProcess": "Sustainably sourced from Fair Trade farmers",
         "url": "images/organic quinoi.jpeg",
         "category": "Grains",
-        "rating": 4.8
+        "rating": 4.5
       },
       {
         "id": 7,
@@ -89,7 +89,7 @@
         "productionProcess": "Formulated with plant-based, eco-friendly ingredients",
         "url": "images/ecofriendly cleaner.jpeg",
         "category": "Cleaning",
-        "rating": 4.2
+        "rating": 4.0
       },
       {
         "id": 8,
@@ -128,7 +128,7 @@
         "productionProcess": "Made from repurposed denim fabric",
         "url": "images/jeans.jpg",
         "category": "Fashion",
-        "rating": 4.2
+        "rating": 4.0
       },
       {
         "id": 11,
@@ -141,7 +141,7 @@
         "productionProcess": "Sustainably sourced from Fair Trade farmers",
         "url": "images/pinneaple.jpeg",
         "category": "Fruits",
-        "rating": 4.7
+        "rating": 4.0
       },
       {
         "id": 12,
@@ -154,7 +154,7 @@
         "productionProcess": "Grown without synthetic pesticides or fertilizers",
         "url": "images/organic apples.jpeg",
         "category": "Fruits",
-        "rating": 4.5
+        "rating": 3.5
       },
       {
         "id": 13,
@@ -167,7 +167,7 @@
         "productionProcess": "Manufactured with eco-friendly materials",
         "url": "images/led bulbs.jpeg",
         "category": "Home",
-        "rating": 4.9
+        "rating": 4.0
       },
       {
         "id": 14,
@@ -180,7 +180,7 @@
         "productionProcess": "Cultivated without synthetic pesticides",
         "url": "images/coffee.jpeg",
         "category": "Beverages",
-        "rating": 4.6
+        "rating": 4.5
       },
       {
         "id": 15,
@@ -193,7 +193,7 @@
         "productionProcess": "Made from sustainable and compostable materials",
         "url": "images/food containers.jpeg",
         "category": "Kitchen",
-        "rating": 4.4
+        "rating": 4.5
       },
       {
         "id": 16,
@@ -206,7 +206,7 @@
         "productionProcess": "Crafted from sustainably harvested bamboo",
         "url": "images/bamboo furniture.jpeg",
         "category": "Home",
-        "rating": 4.8
+        "rating": 5.0
       },
       {
         "id": 17,
@@ -232,7 +232,7 @@
         "productionProcess": "Sourced from organic seed producers",
         "url": "images/seeds.jpeg",
         "category": "Garden",
-        "rating": 4.7
+        "rating": 4.5
       },
       {
         "id": 19,
@@ -245,7 +245,7 @@
         "productionProcess": "Grown without synthetic pesticides",
         "url": "images/spinach.jpeg",
         "category": "Vegetables",
-        "rating": 4.6
+        "rating": 4.5
       },      
       {
         "id": 20,
@@ -258,7 +258,7 @@
         "productionProcess": "Grown and produced with organic practices",
         "url": "images/totebag.jpeg",
         "category": "Fashion",
-        "rating": 4.3
+        "rating": 5.0
       },
       {
         "id": 21,
@@ -271,7 +271,7 @@
         "productionProcess": "Grown without synthetic pesticides",
         "url": "images/potatoes.jpeg",
         "category": "Vegetables",
-        "rating": 4.7
+        "rating": 4.5
       },      
       {
         "id": 22,
@@ -284,7 +284,7 @@
         "productionProcess": "Made with recyclable materials",
         "url": "images/lamp.jpeg",
         "category": "Home",
-        "rating": 4.6
+        "rating": 4.5
       },
       {
         "id": 23,
@@ -297,7 +297,7 @@
         "productionProcess": "Made from sustainable bamboo fibers",
         "url": "images/bamboo bed.jpeg",
         "category": "Home",
-        "rating": 4.7
+        "rating": 5.0
       }
     ]
   }
