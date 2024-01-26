@@ -61,6 +61,17 @@ document.addEventListener("DOMContentLoaded", async function () {
                     <h2>${productInfo.productName} Rating</h2>
                     ${generateStarRating(productInfo.rating)}
                 `;
+
+                const user = document.getElementById("user-info");
+                user.innerHTML = `
+                    <img class= 'user-icon' src="${productInfo.userIconUrl}" alt="${productInfo.userName}">
+                    <span class="username">${productInfo.userName}</span>
+                `;
+
+                const userFeedback = document.getElementById("feedback");
+                userFeedback.innerHTML = `
+                    <p>${productInfo.feedback}</p>
+                `;
     
                 const educationalContent = document.querySelector("#educational-content .article");
                 educationalContent.innerHTML = `
