@@ -531,3 +531,30 @@ button:hover {
 
 
 
+/* styles.css */
+
+#contact-info {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 25px;
+    margin-top: 30px;
+}
+
+#contact-info h2 {
+    color: #3b6c52;
+}
+
+#contact-info ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#contact-info ul li {
+    margin-bottom: 10px;
+}
+
+.social-media a img {
+    max-width: 30px;
+    margin-right: 10px;
+}

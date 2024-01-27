@@ -20,6 +20,13 @@ document.addEventListener("DOMContentLoaded", function () {
         loginPage();
     });
 
+    const aboutItem = document.getElementById('nav-about');
+
+    aboutItem.addEventListener('click', function (event) {
+        event.preventDefault();  
+        aboutPage();
+    });
+
     const sustainabilityFilter = document.getElementById('sustainability-filter');
 
     sustainabilityFilter.addEventListener('change', function () {
@@ -487,6 +494,66 @@ function handleSignup(username, password) {
         console.error('Error during signup:', error);
         alert('Error during signup. Please try again.');
     });
+}
+
+function aboutPage(){
+    const leftSection = document.getElementById('left-section');
+    leftSection.style.display = 'none';
+
+    const rightSection = document.getElementById('right-section');
+    rightSection.style.display = 'none';
+
+    const productContainer = document.getElementById("product-listings");
+    productContainer.innerHTML = '';
+
+    const infoContainer = document.createElement('div');
+    infoContainer.id = 'info-container';
+    infoContainer.style.flex='5';
+    
+    infoContainer.innerHTML = `
+    <h2>About Eco-friendly Products Marketplace</h2>
+    <p>Welcome to Eco-friendly Products Marketplace, the ultimate online destination for sustainable living. We are a platform that connects consumers with eco-friendly businesses, offering a wide range of products and services that are good for you and the planet. Whether you’re looking for organic food, ethical fashion, green beauty, eco-friendly travel, or anything in between, you’ll find it here.</p>
+
+    <h3>Our Mission</h3>
+    <p>Our mission is to make sustainable consumption easy and accessible for everyone. We believe that every purchase is a vote for the kind of world we want to live in. That’s why we carefully select our sellers and verify their sustainability claims, so you can shop with confidence and trust. We also provide transparent information about the environmental impact, eco credentials, and disposal options of each product, so you can make informed and meaningful choices.</p>
+
+    <h3>More Than a Marketplace</h3>
+    <p>But we’re more than just a marketplace. We’re also a community of like-minded people who share a passion for green living. On our platform, you can discover tips, guides, and articles on how to live more sustainably, as well as connect with other users and sellers through forums, discussion boards, and social media. You can also support environmental causes by donating a portion of your proceeds to our partner organizations.</p>
+
+    <h3>Join Us Today</h3>
+    <p>Join us today and discover the benefits of eco-friendly products. Together, we can make a difference for our future. 🌍</p>
+`;
+
+
+productContainer.appendChild(infoContainer);
+
+const contactinfo = document.createElement('div');
+contactinfo.id='contact-info'
+contactinfo.style.flex='1';
+contactinfo.innerHTML = `
+    <h2>Contact Us</h2>
+    <p>If you have any questions or need assistance, feel free to reach out to us. We are here to help!</p>
+    <ul>
+        <li><strong>Email:</strong> info@ecofriendlymarketplace.com</li>
+        <li><strong>Phone:</strong> +1 (555) 123-4567</li>
+    </ul>
+    <h2>Follow Us</h2>
+    <p>Stay connected with us on social media for the latest updates and eco-friendly living tips.</p>
+    <div class="social-media">
+        <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer"><img src="images/x.png" alt="Twitter"></a>
+        <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer"><img src="images/fb.png" alt="Facebook"></a>
+        <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer"><img src="images/ig.jpeg" alt="Instagram"></a>
+    </div>
+`;
+
+productContainer.appendChild(contactinfo);
+
+
+
+
+
+
+
 }
 
     fetchAndDisplayCommunityData();
