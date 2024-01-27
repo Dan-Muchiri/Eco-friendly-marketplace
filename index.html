@@ -18,7 +18,7 @@
     </div>
     <nav id="navigation">
         <ul>
-            <li><a href="#">Products</a></li>
+            <li id="nav-products">Products</li>
             <li><a href="#">About Us</a></li>
         </ul>
     </nav>
@@ -42,30 +42,31 @@
 <div id="left-section">
 <!-- Filtering and Sorting Section -->
 <div id="filtering-section">
-    <div id="sustainability-filters">
-        <h2>Sustainability Filters</h2>
-        <label>
-            <input type="checkbox"> Organic
-        </label>
-        <label>
-            <input type="checkbox"> Recyclable
-        </label>
-        <label>
-            <input type="checkbox"> Energy Efficient
-        </label>
-    </div>
-    <div id="advanced-filters">
-        <h2>Advanced Filters</h2>
-        <label>
-            <input type="checkbox"> Electronics
-        </label>
-        <label>
-            <input type="checkbox"> Home
-        </label>
-        <label>
-            <input type="checkbox"> Above 4.5 rating
-        </label>
-    </div>
+<div id="sustainability-filters">
+    <h2>Sustainability Filters</h2>
+    <label for="sustainability-filter">Filter by Sustainability:</label>
+    <select id="sustainability-filter">
+        <option value="" disabled selected>Sustainability options</option>
+        <option value="carbon">Carbon Footprint: Low</option>
+        <option value="biodegradable">Biodegradable</option>
+        <option value="energy">Energy-Efficient</option>
+        <option value="upcycled">Upcycled / Recycled</option>
+        <option value="reusable">Reusable</option> 
+    </select>
+</div>
+
+<div id="category-filters">
+    <h2>Category Filters</h2>
+    <label for="category-filter">Filter by category:</label>
+    <select id="category-filter">
+        <option value="" disabled selected>Category options</option>
+        <option value="home">Home</option>
+        <option value="food">Food</option>
+        <option value="electronics">Electronics</option>
+        <option value="fashion">Fashion & Beauty</option>
+    </select>
+</div>
+
 
 <!-- Community Engagement Section -->
 <div id="community-section">
@@ -151,11 +152,11 @@
                 ★★★★☆
             </div>
             <div id="user-info">
-                <img src="images/user-icon.png" alt="User Avatar">
+                <img class="user-icon" src="images/user-icon.png" alt="User Avatar">
                 <span class="username">User123</span>
             </div>
             <div id="feedback">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus ante dapibus diam.</p>
+                <p>I really loved the product!</p>
             </div>
         </div>
     </div>

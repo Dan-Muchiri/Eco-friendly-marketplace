@@ -1,15 +1,88 @@
-document.addEventListener("DOMContentLoaded", async function () {
-    try {
-        const response = await fetch("http://localhost:3000/products");
-        const data = await response.json();
+document.addEventListener("DOMContentLoaded", function () {
+    const productListNavItem = document.getElementById('nav-products');
 
-        updateProductListings(data);
-    } catch (error) {
-        console.error("Error fetching data:", error);
+    productListNavItem.addEventListener('click', function (event) {
+        event.preventDefault();  
+        fetchDataAndDisplay("http://localhost:3000/products");
+    });
+
+    const sustainabilityFilter = document.getElementById('sustainability-filter');
+
+    sustainabilityFilter.addEventListener('change', function () {
+        fetchSustainabilityAndFilter("http://localhost:3000/products") 
+    });
+
+    const categoryFilter = document.getElementById('category-filter');
+
+    categoryFilter.addEventListener('change', function () {
+        fetchCategoryAndFilter("http://localhost:3000/products") 
+    });
+
+
+    async function fetchDataAndDisplay(apiUrl) {
+        try {
+            const response = await fetch(apiUrl);
+            const data = await response.json();
+            updateProductListings(data);
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
     }
+
+    async function fetchSustainabilityAndFilter(apiUrl) {
+        try {
+            const response = await fetch(apiUrl);
+            const data = await response.json();
+    
+            const selectedSustainability = sustainabilityFilter.value;
+    
+            let filteredData = data;
+    
+            if (selectedSustainability) {
+                const sustainabilityFilterLowerCase = selectedSustainability.toLowerCase();
+                filteredData = data.filter(product => {
+                    const productSustainability = product.sustainabilityMetrics.toLowerCase();
+                    return productSustainability.includes(sustainabilityFilterLowerCase);
+                });
+            }
+
+            updateProductListings(filteredData);
+    
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
+    }
+
+    async function fetchCategoryAndFilter(apiUrl) {
+        try {
+            const response = await fetch(apiUrl);
+            const data = await response.json();
+    
+            const selectedCategory = categoryFilter.value;
+    
+            let filteredData = data;
+    
+            if (selectedCategory) {
+                const categoryFilterLowerCase = selectedCategory.toLowerCase();
+                filteredData = data.filter(product => {
+                    const productCategory = product.category.toLowerCase();
+                    return productCategory.includes(categoryFilterLowerCase);
+                });
+            }
+
+            updateProductListings(filteredData);
+    
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
+    }
+    
 
     function updateProductListings(products) {
         const productContainer = document.getElementById("product-listings");
+
+        sustainabilityFilter.value = "";
+        categoryFilter.value = "";
 
         productContainer.innerHTML = "";
 
@@ -28,6 +101,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
 
 
+
     function createProductCard(product) {
         const productCard = document.createElement("div");
         productCard.className = "product-card";
@@ -38,7 +112,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             <h3>${product.productName}</h3>
             <p class="sustainability-metrics">${product.sustainabilityMetrics}</p>
             <p class="certification-badges">${product.certificationBadges ? product.certificationBadges.join(", ") : ''}</p>
-            <p class="category">${product.category}</p>
+            <p class="price">${product.price}</p>
             <button class="add-to-cart-btn">Add to Cart</button>
         `;
     
@@ -117,4 +191,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     
         event.stopPropagation();
     }
+
+    productListNavItem.click();
 });
+
