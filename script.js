@@ -2,8 +2,22 @@ document.addEventListener("DOMContentLoaded", function () {
     const productListNavItem = document.getElementById('nav-products');
 
     productListNavItem.addEventListener('click', function (event) {
-        event.preventDefault();  
+        event.preventDefault(); 
+        
+        const leftSection =document.getElementById('left-section');
+        leftSection.style.display ='flex';
+
+        const rightSection =document.getElementById('right-section');
+        rightSection.style.display ='flex';
+
         fetchDataAndDisplay("http://localhost:3000/products");
+    });
+
+    const loginItem = document.getElementById('login');
+
+    loginItem.addEventListener('click', function (event) {
+        event.preventDefault();  
+        loginPage();
     });
 
     const sustainabilityFilter = document.getElementById('sustainability-filter');
@@ -268,8 +282,119 @@ function createCommunityCard(communityItem) {
     return communityCard;
 }
 
+function loginPage() {
+    const leftSection = document.getElementById('left-section');
+    leftSection.style.display = 'none';
 
-fetchAndDisplayCommunityData();
+    const rightSection = document.getElementById('right-section');
+    rightSection.style.display = 'none';
+
+    const productContainer = document.getElementById("product-listings");
+    productContainer.innerHTML = '';
+
+    const loginContainer = document.createElement('div');
+    loginContainer.className = 'login-container';
+
+    const loginForm = document.createElement('form');
+    loginForm.className = 'login-form';
+
+    const usernameLabel = document.createElement('label');
+    usernameLabel.for = 'username';
+    usernameLabel.textContent = 'Username:';
+
+    const usernameInput = document.createElement('input');
+    usernameInput.type = 'text';
+    usernameInput.id = 'username';
+    usernameInput.name = 'username';
+    usernameInput.required = true;
+
+    const passwordLabel = document.createElement('label');
+    passwordLabel.for = 'password';
+    passwordLabel.textContent = 'Password:';
+
+    const passwordInput = document.createElement('input');
+    passwordInput.type = 'password';
+    passwordInput.id = 'password';
+    passwordInput.name = 'password';
+    passwordInput.required = true;
+
+    const loginButton = document.createElement('button');
+    loginButton.type = 'submit';
+    loginButton.textContent = 'Login';
+
+    loginForm.appendChild(usernameLabel);
+    loginForm.appendChild(usernameInput);
+    loginForm.appendChild(passwordLabel);
+    loginForm.appendChild(passwordInput);
+    loginForm.appendChild(loginButton);
+
+    loginContainer.appendChild(loginForm);
+
+    const signUpPrompt = document.createElement('p');
+    signUpPrompt.textContent = "Not a user? Sign up now!";
+    signUpPrompt.className = 'sign-up-prompt';
+
+    const signUpLink = document.createElement('a');
+    signUpLink.href = '#'; // Provide the actual link for sign up
+    signUpLink.textContent = 'Sign Up';
+    signUpLink.className = 'sign-up-link';
+
+    signUpPrompt.appendChild(signUpLink);
+    loginContainer.appendChild(signUpPrompt);
+
+    productContainer.appendChild(loginContainer);
+
+    loginForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const username = usernameInput.value;
+        const password = passwordInput.value;
+
+       checkforUser(username,password,'http://localhost:3000/community');
+
+        // Reset form
+        loginForm.reset();
+    });
+}
+
+async function checkforUser(username, password, apiUrl) {
+    try {
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+
+        const foundUser = data.find(user => {
+            return user.username.toLowerCase() === username.toLowerCase();
+        });
+
+        if (foundUser) {
+        
+            if (foundUser.password === password) {
+            
+                alert(`Welcome back, ${foundUser.username}!`);
+                const user = document.getElementById('login');
+                user.textContent = `${foundUser.username}`;
+                user.style.pointerEvents = 'none';
+                productListNavItem.click();
+                
+            } else {
+            
+                alert("Incorrect password. Please try again.");
+        
+            }
+        } else {
+            
+            alert("User not found. Please sign up.");
+            
+        }
+
+
+    } catch (error) {
+        console.error("Error fetching data:", error);
+    }
+}
+
+
+    fetchAndDisplayCommunityData();
 
 
     productListNavItem.click();
