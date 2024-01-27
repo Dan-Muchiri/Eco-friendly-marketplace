@@ -18,6 +18,14 @@ document.addEventListener("DOMContentLoaded", function () {
         fetchCategoryAndFilter("http://localhost:3000/products") 
     });
 
+    const searchButton = document.getElementById('search-button');
+    const searchInput = document.getElementById('search-input');
+
+    searchButton.addEventListener('click', function () {
+        fetchAndDisplaySearchResults("http://localhost:3000/products");
+        
+    });
+
 
     async function fetchDataAndDisplay(apiUrl) {
         try {
@@ -67,6 +75,30 @@ document.addEventListener("DOMContentLoaded", function () {
                 filteredData = data.filter(product => {
                     const productCategory = product.category.toLowerCase();
                     return productCategory.includes(categoryFilterLowerCase);
+                });
+            }
+
+            updateProductListings(filteredData);
+    
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
+    }
+
+    async function fetchAndDisplaySearchResults(apiUrl) {
+        try {
+            const response = await fetch(apiUrl);
+            const data = await response.json();
+    
+            const searchquery = searchInput.value;
+    
+            let filteredData = data;
+    
+            if (searchquery) {
+                const searchQueryLowerCase = searchquery.toLowerCase();
+                filteredData = data.filter(product => {
+                    const productName = product.productName.toLowerCase();
+                    return productName.includes(searchQueryLowerCase);
                 });
             }
 
