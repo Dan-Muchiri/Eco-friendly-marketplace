@@ -43,6 +43,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const searchInput = document.getElementById('search-input');
 
     searchButton.addEventListener('click', function () {
+        
+        const leftSection =document.getElementById('left-section');
+        leftSection.style.display ='flex';
+
+        const rightSection =document.getElementById('right-section');
+        rightSection.style.display ='flex';
+
         fetchAndDisplaySearchResults("http://localhost:3000/products");
         
     });
