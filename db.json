@@ -368,6 +368,43 @@
             "userIconUrl": "images/user3.png",
             "userName": "DreamWeaver"
           }
+    ],
+    "community": [
+      {
+        "id": 1,
+        "username": "NatureExplorer",
+        "userIconUrl": "images/user2.png",
+        "comment": "Being part of this community has inspired me to explore more eco-friendly products. Thanks for the great recommendations!",
+        "date": "Posted on January 23, 2024"
+      },
+      {
+        "id": 2,
+        "username": "HappyUser123",
+        "userIconUrl": "images/user5.png",
+        "comment": "I absolutely love this app! It has made sustainable living so much easier for me. Kudos to the team!",
+        "date": "Posted on January 23, 2022"
+      },
+      {
+        "id": 3,
+        "username": "GreenLivingFan",
+        "userIconUrl": "images/user4.png",
+        "comment": "This app has become my go-to guide for sustainable living. It's user-friendly and filled with amazing product choices.",
+        "date": "Posted on February 15, 2023"
+      },
+      {
+        "id": 4,
+        "username": "EcoWarrior",
+        "userIconUrl": "images/user3.png",
+        "comment": "As an eco-warrior, I appreciate the effort put into curating sustainable products. Keep up the good work!",
+        "date": "Posted on April 2, 2023"
+      },
+      {
+        "id": 5,
+        "username": "ConsciousConsumer",
+        "userIconUrl": "images/user1.png",
+        "comment": "Finally, an app that aligns with my values! The community here shares valuable insights, making it easier to make conscious choices.",
+        "date": "Posted on May 19, 2023"
+      }
     ]
   }
   

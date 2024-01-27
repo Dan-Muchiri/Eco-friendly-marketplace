@@ -75,11 +75,11 @@ body {
 }
 
 #nav-products:hover {
-    color: #a8d1bb; /* Subtle color change on hover */
+    color: #a8d1bb; 
 }
 
 #nav-products:active {
-    color: #567f64; /* Slightly darker color on active/click */
+    color: #567f64; 
 }
 
 #user-options a {
@@ -159,6 +159,9 @@ body {
     margin-bottom: 10px;
 }
 
+#category-filters h2, #community-section h2{
+    margin-top: 10px;
+}
 label {
     display: block;
     margin-bottom: 10px;
@@ -179,24 +182,32 @@ select {
 
 /* Community Engagement Styles */
 #community-section {
+    position: relative;
     padding: 0px;
     background-color: #d2edd9;
     border-radius: 10px;
     margin-top: 20px;
 }
 
+
 #forum {
-    display: grid;
-    gap: 20px;
+    display: flex;
+    flex-wrap: nowrap; 
+    overflow-x: auto; 
+    gap: 3px;
+    padding: 0px;
 }
 
 .post {
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 15px;
-    margin-bottom: 20px; 
+    padding: 10px;
+    margin-right: 0px; 
+    min-width: 93.5%; 
+    margin-bottom: 5px;
 }
+
 
 .post img {
     max-width: 40px;
@@ -207,10 +218,18 @@ select {
 .username {
     font-weight: bold;
     color: #3b6c52;
+    font-size: 14px;
+    margin: 7px;
+}
+
+.post-message {
+    font-size: 12px;
 }
 
 .date {
     color: #555;
+    font-size: 12px;
+    margin: 0;
 }
 
 .post:hover {
@@ -218,6 +237,26 @@ select {
     transition: background-color 0.3s ease;
 }
 
+#forum-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+#forum-navigation button {
+    background-color: #3b6c52;
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#forum-navigation button:hover {
+    background-color: #fff;
+    color: #3b6c52;
+}
 
 
 /* Right Section Styles */

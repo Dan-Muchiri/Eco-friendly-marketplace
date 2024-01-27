@@ -192,6 +192,54 @@ document.addEventListener("DOMContentLoaded", function () {
         event.stopPropagation();
     }
 
+    const communityEndpoint = "http://localhost:3000/community";
+
+
+async function fetchAndDisplayCommunityData() {
+    try {
+        const response = await fetch(communityEndpoint);
+        const communityData = await response.json();
+        updateCommunitySection(communityData);
+    } catch (error) {
+        console.error("Error fetching community data:", error);
+    }
+}
+
+
+function updateCommunitySection(communityData) {
+    const communityContainer = document.getElementById("forum");
+
+    communityContainer.innerHTML = "";
+
+    if (Array.isArray(communityData)) {
+        communityData.forEach((communityItem) => {
+            const communityCard = createCommunityCard(communityItem);
+            communityContainer.appendChild(communityCard);
+        });
+    } else {
+        console.error("Invalid community data:", communityData);
+    }
+}
+
+
+function createCommunityCard(communityItem) {
+    const communityCard = document.createElement("div");
+    communityCard.className = "post";
+
+    communityCard.innerHTML = `
+        <img src="${communityItem.userIconUrl}" alt="${communityItem.username}">
+        <h3 class='username'>${communityItem.username}</h3>
+        <p class='post-message'>${communityItem.comment}</p>
+        <p class="date">${communityItem.date}</p>
+    `;
+
+    return communityCard;
+}
+
+
+fetchAndDisplayCommunityData();
+
+
     productListNavItem.click();
 });
 
