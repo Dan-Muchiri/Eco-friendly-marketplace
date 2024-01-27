@@ -293,7 +293,7 @@ function loginPage() {
     productContainer.innerHTML = '';
 
     const loginContainer = document.createElement('div');
-    loginContainer.className = 'login-container';
+    loginContainer.id = 'login-container';
 
     const loginForm = document.createElement('form');
     loginForm.className = 'login-form';
@@ -334,8 +334,7 @@ function loginPage() {
     signUpPrompt.textContent = "Not a user? Sign up now!";
     signUpPrompt.className = 'sign-up-prompt';
 
-    const signUpLink = document.createElement('a');
-    signUpLink.href = '#'; // Provide the actual link for sign up
+    const signUpLink = document.createElement('p');
     signUpLink.textContent = 'Sign Up';
     signUpLink.className = 'sign-up-link';
 
@@ -350,10 +349,13 @@ function loginPage() {
         const username = usernameInput.value;
         const password = passwordInput.value;
 
-       checkforUser(username,password,'http://localhost:3000/community');
+    checkforUser(username,password,'http://localhost:3000/users');
 
-        // Reset form
         loginForm.reset();
+    });
+
+    signUpLink.addEventListener('click', function () {
+        createSignupForm();
     });
 }
 
@@ -393,6 +395,99 @@ async function checkforUser(username, password, apiUrl) {
     }
 }
 
+function createSignupForm() {
+    const container = document.getElementById('login-container');
+    container.innerHTML = '';
+
+    const signupForm = document.createElement('form');
+    signupForm.className = 'signup-form';
+
+    const usernameLabel = document.createElement('label');
+    usernameLabel.for = 'signup-username';
+    usernameLabel.textContent = 'Username:';
+
+    const usernameInput = document.createElement('input');
+    usernameInput.type = 'text';
+    usernameInput.id = 'signup-username';
+    usernameInput.name = 'signup-username';
+    usernameInput.required = true;
+
+    const passwordLabel = document.createElement('label');
+    passwordLabel.for = 'signup-password';
+    passwordLabel.textContent = 'Password:';
+
+    const passwordInput = document.createElement('input');
+    passwordInput.type = 'password';
+    passwordInput.id = 'signup-password';
+    passwordInput.name = 'signup-password';
+    passwordInput.required = true;
+
+    const confirmPasswordLabel = document.createElement('label');
+    confirmPasswordLabel.for = 'confirm-password';
+    confirmPasswordLabel.textContent = 'Confirm Password:';
+
+    const confirmPasswordInput = document.createElement('input');
+    confirmPasswordInput.type = 'password';
+    confirmPasswordInput.id = 'confirm-password';
+    confirmPasswordInput.name = 'confirm-password';
+    confirmPasswordInput.required = true;
+
+    const signupButton = document.createElement('button');
+    signupButton.type = 'submit';
+    signupButton.textContent = 'Sign Up';
+
+    signupForm.appendChild(usernameLabel);
+    signupForm.appendChild(usernameInput);
+    signupForm.appendChild(passwordLabel);
+    signupForm.appendChild(passwordInput);
+    signupForm.appendChild(confirmPasswordLabel);
+    signupForm.appendChild(confirmPasswordInput);
+    signupForm.appendChild(signupButton);
+
+    container.appendChild(signupForm);
+
+    signupForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const username = usernameInput.value;
+        const password = passwordInput.value;
+        const confirmPassword = confirmPasswordInput.value;
+
+        if (password !== confirmPassword) {
+            alert("Passwords do not match. Please try again.");
+            signupForm.reset();
+            return;
+        }
+
+        handleSignup(username, password);
+
+        signupForm.reset();
+    });
+}
+
+function handleSignup(username, password) {
+
+    fetch('http://localhost:3000/users', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+        body: JSON.stringify({ username, password }),
+    })
+    .then(response => response.json())
+    .then(data => {
+    
+        alert(`Welcome ${data.username}!`);
+        const user = document.getElementById('login');
+        user.textContent = `${data.username}`;
+        user.style.pointerEvents = 'none';
+        productListNavItem.click();
+    })
+    .catch(error => {
+        console.error('Error during signup:', error);
+        alert('Error during signup. Please try again.');
+    });
+}
 
     fetchAndDisplayCommunityData();
 

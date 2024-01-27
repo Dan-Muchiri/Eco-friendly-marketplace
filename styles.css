@@ -427,7 +427,7 @@ button:hover {
 
 
 
-.login-container {
+#login-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -473,6 +473,45 @@ button:hover {
 }
 
 /* Sign Up Section Styles */
+.signup-form {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+    margin-top: 20px; /* Add margin to separate it from the login form */
+}
+
+.signup-form label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #555;
+}
+
+.signup-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.signup-form button {
+    background-color: #3b6c52;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.signup-form button:hover {
+    background-color: #567f64;
+}
+
+/* Additional Styles for Sign Up Prompt and Link */
 .sign-up-prompt {
     font-size: 16px;
     color: #555;
@@ -484,19 +523,11 @@ button:hover {
     color: #3b6c52;
     text-decoration: underline;
     cursor: pointer;
-    margin-left: 5px;
 }
 
 .sign-up-link:hover {
     color: #a8d1bb;
 }
 
-.sign-up-container {
-    display: none; /* Initially hide the sign-up container */
-}
 
-/* Show the sign-up container when the sign-up link is clicked */
-.sign-up-link.active {
-    display: block;
-}
 
