@@ -9,7 +9,7 @@
         "Handcrafted"
       ],
       "energyEfficiency": null,
-      "price": "$18.99",
+      "price": 18.99,
       "environmentalImpact": "Repurposes glass bottles, reducing waste",
       "productionProcess": "Handcrafted from upcycled materials",
       "url": "images/bottles.jpeg",
@@ -25,7 +25,7 @@
       "sustainabilityMetrics": "Reusable",
       "certificationBadges": null,
       "energyEfficiency": null,
-      "price": "$9.99",
+      "price": 9.99,
       "environmentalImpact": "Reduces single-use plastic waste",
       "productionProcess": "Made from sustainable bamboo",
       "url": "images/bamboo utensils.jpeg",
@@ -44,7 +44,7 @@
         "Fair Trade"
       ],
       "energyEfficiency": null,
-      "price": "$3.99",
+      "price": 3.99,
       "environmentalImpact": "Supports fair wages and sustainable farming",
       "productionProcess": "Sustainably sourced from Fair Trade farmers",
       "url": "images/mango.jpeg",
@@ -60,7 +60,7 @@
       "sustainabilityMetrics": "Energy-Efficient",
       "certificationBadges": null,
       "energyEfficiency": "High",
-      "price": "$29.99",
+      "price": 29.99,
       "environmentalImpact": "Reduces reliance on conventional energy sources",
       "productionProcess": "Harnesses solar energy for charging",
       "url": "images/solar charger.jpeg",
@@ -79,7 +79,7 @@
         "Smart Home Compatible"
       ],
       "energyEfficiency": "High",
-      "price": "$79.99",
+      "price": 79.99,
       "environmentalImpact": "Optimizes heating and cooling for energy savings",
       "productionProcess": "Designed with recyclable materials",
       "url": "images/smart thermostart.jpeg",
@@ -98,7 +98,7 @@
         "Fair Trade"
       ],
       "energyEfficiency": null,
-      "price": "$5.99",
+      "price": 5.99,
       "environmentalImpact": "Promotes biodiversity",
       "productionProcess": "Sustainably sourced from Fair Trade farmers",
       "url": "images/organic quinoi.jpeg",
@@ -116,7 +116,7 @@
         "EcoCert"
       ],
       "energyEfficiency": null,
-      "price": "$4.49",
+      "price": 4.49,
       "environmentalImpact": "Biodegradable ingredients",
       "productionProcess": "Formulated with plant-based, eco-friendly ingredients",
       "url": "images/ecofriendly cleaner.jpeg",
@@ -132,7 +132,7 @@
       "sustainabilityMetrics": "Upcycled/ Recycled",
       "certificationBadges": null,
       "energyEfficiency": null,
-      "price": "$2.79",
+      "price": 2.79,
       "environmentalImpact": "Made from post-consumer recycled paper",
       "productionProcess": "Supports recycling initiatives",
       "url": "images/recycled tissue.jpeg",
@@ -150,7 +150,7 @@
         "Cruelty-Free"
       ],
       "energyEfficiency": null,
-      "price": "$8.99",
+      "price": 8.99,
       "environmentalImpact": "Biodegradable formula",
       "productionProcess": "Free from synthetic fragrances and harsh chemicals",
       "url": "images/coconut oil.jpeg",
@@ -166,7 +166,7 @@
       "sustainabilityMetrics": "Upcycled/ Recycled",
       "certificationBadges": null,
       "energyEfficiency": null,
-      "price": "$39.99",
+      "price": 39.99,
       "environmentalImpact": "Diverts textile waste from landfills",
       "productionProcess": "Made from repurposed denim fabric",
       "url": "images/jeans.jpg",
@@ -185,7 +185,7 @@
         "Fair Trade"
       ],
       "energyEfficiency": null,
-      "price": "$4.99",
+      "price": 4.99,
       "environmentalImpact": "Supports fair wages and sustainable farming",
       "productionProcess": "Sustainably sourced from Fair Trade farmers",
       "url": "images/pinneaple.jpeg",
@@ -203,7 +203,7 @@
         "USDA Organic"
       ],
       "energyEfficiency": null,
-      "price": "$2.99",
+      "price": 2.99,
       "environmentalImpact": "Reduced pesticide use",
       "productionProcess": "Grown without synthetic pesticides or fertilizers",
       "url": "images/organic apples.jpeg",
@@ -222,7 +222,7 @@
         "Recyclable Packaging"
       ],
       "energyEfficiency": "High",
-      "price": "$12.99",
+      "price": 12.99,
       "environmentalImpact": "Reduces electricity consumption",
       "productionProcess": "Manufactured with eco-friendly materials",
       "url": "images/led bulbs.jpeg",
@@ -241,7 +241,7 @@
         "USDA Organic"
       ],
       "energyEfficiency": null,
-      "price": "$12.99",
+      "price": 12.99,
       "environmentalImpact": "Supports fair wages and sustainable farming",
       "productionProcess": "Cultivated without synthetic pesticides",
       "url": "images/coffee.jpeg",
@@ -257,7 +257,7 @@
       "sustainabilityMetrics": "Reusable",
       "certificationBadges": null,
       "energyEfficiency": null,
-      "price": "$14.99",
+      "price": 14.99,
       "environmentalImpact": "Reduces single-use plastic",
       "productionProcess": "Made from sustainable and compostable materials",
       "url": "images/food containers.jpeg",
@@ -273,7 +273,7 @@
       "sustainabilityMetrics": "Biodegradable",
       "certificationBadges": null,
       "energyEfficiency": null,
-      "price": "$299.99",
+      "price": 299.99,
       "environmentalImpact": "Fast-growing, renewable bamboo",
       "productionProcess": "Crafted from sustainably harvested bamboo",
       "url": "images/bamboo furniture.jpeg",
@@ -292,7 +292,7 @@
         "Non-GMO"
       ],
       "energyEfficiency": null,
-      "price": "$1.99",
+      "price": 1.99,
       "environmentalImpact": "Promotes sustainable farming practices",
       "productionProcess": "Grown without synthetic pesticides",
       "url": "images/carrots.jpeg",
@@ -310,7 +310,7 @@
         "USDA Organic"
       ],
       "energyEfficiency": null,
-      "price": "$1.99",
+      "price": 1.99,
       "environmentalImpact": "Free from synthetic pesticides",
       "productionProcess": "Sourced from organic seed producers",
       "url": "images/seeds.jpeg",
@@ -329,7 +329,7 @@
         "Biodegradable"
       ],
       "energyEfficiency": null,
-      "price": "$14.99",
+      "price": 14.99,
       "environmentalImpact": "Promotes sustainable agriculture",
       "productionProcess": "Grown without synthetic pesticides",
       "url": "images/spinach.jpeg",
@@ -348,7 +348,7 @@
         "Fair Trade"
       ],
       "energyEfficiency": null,
-      "price": "$9.99",
+      "price": 9.99,
       "environmentalImpact": "Biodegradable and reduces plastic bag usage",
       "productionProcess": "Grown and produced with organic practices",
       "url": "images/totebag.jpeg",
@@ -367,7 +367,7 @@
         "Non-GMO"
       ],
       "energyEfficiency": null,
-      "price": "$2.99",
+      "price": 2.99,
       "environmentalImpact": "Promotes sustainable farming practices",
       "productionProcess": "Grown without synthetic pesticides",
       "url": "images/potatoes.jpeg",
@@ -386,7 +386,7 @@
         "Recyclable"
       ],
       "energyEfficiency": "High",
-      "price": "$39.99",
+      "price": 39.99,
       "environmentalImpact": "Uses LED technology for energy efficiency",
       "productionProcess": "Made with recyclable materials",
       "url": "images/lamp.jpeg",
@@ -405,7 +405,7 @@
         "Fair Trade"
       ],
       "energyEfficiency": null,
-      "price": "$79.99",
+      "price": 79.99,
       "environmentalImpact": "Biodegradable bedding material",
       "productionProcess": "Made from sustainable bamboo fibers",
       "url": "images/bamboo bed.jpeg",
@@ -491,5 +491,45 @@
     }
   ],
   "cart": [
+    {
+      "productId": 1,
+      "productName": "Upcycled Glass Bottle Vases",
+      "url": "images/bottles.jpeg",
+      "price": 18.99,
+      "quantity": 2,
+      "id": 1
+    },
+    {
+      "productId": 2,
+      "productName": "Reusable Bamboo Utensil Set",
+      "url": "images/bamboo utensils.jpeg",
+      "price": 9.99,
+      "quantity": 3,
+      "id": 2
+    },
+    {
+      "productId": 3,
+      "productName": "Organic Mango",
+      "url": "images/mango.jpeg",
+      "price": 3.99,
+      "quantity": 1,
+      "id": 3
+    },
+    {
+      "productId": 4,
+      "productName": "Solar-Powered Phone Charger",
+      "url": "images/solar charger.jpeg",
+      "price": 29.99,
+      "quantity": 1,
+      "id": 4
+    },
+    {
+      "productId": 5,
+      "productName": "Smart Thermostat",
+      "url": "images/smart thermostart.jpeg",
+      "price": 79.99,
+      "quantity": 1,
+      "id": 5
+    }
   ]
 }

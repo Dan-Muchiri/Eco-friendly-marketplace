@@ -479,7 +479,7 @@ button:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 20px;
     width: 300px;
-    margin-top: 20px; /* Add margin to separate it from the login form */
+    margin-top: 20px; 
 }
 
 .signup-form label {
@@ -558,4 +558,85 @@ button:hover {
 .social-media a img {
     max-width: 30px;
     margin-right: 10px;
+}
+
+
+#cart-container {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    padding: 10px;
+    position: relative;
+    height: 75vh;
+    margin: 0;
+    padding-left: 120px;
+}
+
+.cart-item {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    padding: 15px;
+    text-align: center;
+    height: 390px;
+    width: 250px; 
+}
+
+.cart-item img {
+    max-height: 40%;
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
+
+.cart-item h3 {
+    color: #3b6c52;
+    font-size: 16px;
+    margin-top: 2px;
+    margin-bottom: 3px;
+}
+
+.cart-item .price {
+    color: #3b6c52;
+    font-weight: bold;
+}
+
+.cart-item .total {
+    color: #3b6c52;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+.cart-item .quantity {
+    color: #555;
+    font-size: 14px;
+    margin-bottom: 0;
+}
+
+
+#cart-container button {
+    background-color: #3b6c52;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 15px;
+}
+
+#cart-container button:hover {
+    background-color: #567f64;
+}
+
+#total{
+    position: absolute;
+    bottom: 30px;
+    color: #3b6c52;
+    font-weight: bold;
+}
+
+#checkout{
+    position: absolute;
+    bottom: 0px;
 }
