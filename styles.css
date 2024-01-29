@@ -539,6 +539,7 @@ button:hover {
     border-radius: 10px;
     margin: 25px;
     margin-top: 30px;
+    max-height: 80vh;
 }
 
 #contact-info h2 {

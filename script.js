@@ -179,7 +179,8 @@ document.addEventListener("DOMContentLoaded", function () {
         productCard.addEventListener("click", onProductCardClick);
     
         const addToCartButton = productCard.querySelector(".add-to-cart-btn");
-        addToCartButton.addEventListener("click", onAddToCartButtonClick);
+addToCartButton.dataset.productId = product.id;  // Add this line
+addToCartButton.addEventListener("click", onAddToCartButtonClick);
     
         return productCard;
     }
@@ -247,10 +248,75 @@ document.addEventListener("DOMContentLoaded", function () {
     
 
     function onAddToCartButtonClick(event) {
-        console.log("Add to Cart button clicked");
+        const productId = event.currentTarget.dataset.productId;
+
+        fetchProductInformationById(productId)
+            .then((productInfo) => {
+                addItemToCart(productInfo);
+            })
+            .catch((error) => {
+                console.error("Error fetching product information:", error);
+            });
     
         event.stopPropagation();
     }
+    
+    async function addItemToCart(productInfo) {
+        const cartEndpoint = "http://localhost:3000/cart";
+
+        console.log(productInfo)
+    
+        try {
+            const response = await fetch(cartEndpoint);
+            const cartItems = await response.json();
+    
+            const existingItem = cartItems.find(item => item.productId === productInfo.id);
+    
+            if (existingItem) {
+                console.log(existingItem)
+                existingItem.quantity++;
+
+                await fetch(`${cartEndpoint}/${productInfo.id}`, {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(existingItem),
+                });
+    
+                updateCartCount();
+                alert("Added to cart!");
+            } else {
+                const newItem = {
+                    productId: productInfo.id,
+                    productName: productInfo.productName,
+                    price: productInfo.price,
+                    quantity: 1,
+                };
+    
+                await fetch(cartEndpoint, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(newItem),
+                });
+    
+                updateCartCount();
+                alert("Added to cart!");
+
+            }
+    
+        } catch (error) {
+            console.error("Error updating cart:", error);
+        }
+    }
+    
+    function updateCartCount() {
+        const cartCountElement = document.getElementById("cart-count");
+        cartCountElement.textContent ++;
+    }
+    
 
     const communityEndpoint = "http://localhost:3000/community";
 
@@ -518,18 +584,49 @@ function aboutPage(){
     infoContainer.style.flex='5';
     
     infoContainer.innerHTML = `
-    <h2>About Eco-friendly Products Marketplace</h2>
-    <p>Welcome to Eco-friendly Products Marketplace, the ultimate online destination for sustainable living. We are a platform that connects consumers with eco-friendly businesses, offering a wide range of products and services that are good for you and the planet. Whether you’re looking for organic food, ethical fashion, green beauty, eco-friendly travel, or anything in between, you’ll find it here.</p>
+    <h2>About Eco-Friendly Market Place</h2>
+    <p>Join our platform and discover how you can access information, training, and customers for your eco-friendly products and services. Register now and get a chance to win a free smartphone and solar charger. Don’t miss this opportunity to grow your green livelihood.</p>
 
-    <h3>Our Mission</h3>
-    <p>Our mission is to make sustainable consumption easy and accessible for everyone. We believe that every purchase is a vote for the kind of world we want to live in. That’s why we carefully select our sellers and verify their sustainability claims, so you can shop with confidence and trust. We also provide transparent information about the environmental impact, eco credentials, and disposal options of each product, so you can make informed and meaningful choices.</p>
+    <h3>About Us</h3>
+    <p>At Eco-Friendly Market Place, we believe in harnessing the power of digital innovation to cultivate a sustainable future for farmers and artisans worldwide. Our mission is to empower these vital contributors to our society with the tools they need to thrive in the face of climate change and market challenges.</p>
 
-    <h3>More Than a Marketplace</h3>
-    <p>But we’re more than just a marketplace. We’re also a community of like-minded people who share a passion for green living. On our platform, you can discover tips, guides, and articles on how to live more sustainably, as well as connect with other users and sellers through forums, discussion boards, and social media. You can also support environmental causes by donating a portion of your proceeds to our partner organizations.</p>
+    <h4>The Problem</h4>
+    <p>Climate change casts a long shadow over millions of producers worldwide, particularly farmers and art crafters whose livelihoods depend heavily on natural resources. Limited access to information, skills, and markets leaves them vulnerable to environmental uncertainties, hindering their ability to adapt, thrive, and secure sustainable income.</p>
 
-    <h3>Join Us Today</h3>
-    <p>Join us today and discover the benefits of eco-friendly products. Together, we can make a difference for our future. 🌍</p>
+    <h4>The Solution</h4>
+    <p>Enter a revolutionary green marketplace built on the pillars of blockchain and artificial intelligence. We envision a platform that transcends the limitations of conventional channels, empowering producers to embrace sustainability and connect with a global audience of eco-conscious consumers.</p>
+
+    <h3>How it Works</h3>
+    <ul>
+        <li><strong>Beyond Crafts & Crops:</strong> Our marketplace extends beyond traditional offerings, encompassing a diverse range of eco-friendly products and services.</li>
+        <li><strong>Powered by Blockchain:</strong> Transparency and trust are woven into the fabric of our platform. Blockchain technology ensures traceability, authenticity, and secure transactions.</li>
+        <li><strong>AI-Driven Insights:</strong> Leveraging the power of artificial intelligence, we provide producers with personalized insights and recommendations.</li>
+        <li><strong>Connecting Communities:</strong> Our platform fosters a vibrant community of producers and consumers through interactive forums, workshops, and live events.</li>
+    </ul>
+
+    <h3>The Impact</h3>
+    <p>This green marketplace is not just a platform; it's a catalyst for change. By empowering producers, promoting sustainable practices, and fostering environmental consciousness, we aim to:</p>
+    <ul>
+        <li>Boost Economic Sustainability</li>
+        <li>Drive Environmental Stewardship</li>
+        <li>Empower Communities</li>
+    </ul>
+
+    <h3>Ensuring Accessibility</h3>
+    <p>Accessibility is an important aspect of designing inclusive digital solutions for farmers and art crafters with low digital skills. Here are some tips to ensure the accessibility of your platform:</p>
+    <ul>
+        <li>Use simple and clear language</li>
+        <li>Use appropriate media and tailor user interfaces</li>
+        <li>Provide initial and ongoing training and support</li>
+        <li>Constantly monitor, measure, and improve the platform</li>
+    </ul>
+
+    <h3>Join the Movement</h3>
+    <p>Beyond Craft & Crop is not just a marketplace; it's a movement. Join us in building a future where sustainability thrives, producers prosper, and consumers make informed choices for the good of the planet.</p>
+
+    <p><strong>Together, let's rewrite the narrative. Let's grow a greener future, one click at a time.</strong></p>
 `;
+
 
 
 productContainer.appendChild(infoContainer);
