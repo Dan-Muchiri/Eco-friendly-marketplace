@@ -644,3 +644,44 @@ button:hover {
     position: absolute;
     bottom: 0px;
 }
+
+/* Add these styles to your existing CSS file */
+
+/* Payment Form Styles */
+#paymentForm {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+    margin: 20px auto;
+}
+
+#paymentForm label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #555;
+}
+
+#paymentForm input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#paymentForm button {
+    background-color: #3b6c52;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#paymentForm button:hover {
+    background-color: #567f64;
+}

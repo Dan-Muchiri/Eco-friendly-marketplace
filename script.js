@@ -186,8 +186,8 @@ document.addEventListener("DOMContentLoaded", function () {
         productCard.addEventListener("click", onProductCardClick);
     
         const addToCartButton = productCard.querySelector(".add-to-cart-btn");
-addToCartButton.dataset.productId = product.id;  // Add this line
-addToCartButton.addEventListener("click", onAddToCartButtonClick);
+        addToCartButton.dataset.productId = product.id;  
+        addToCartButton.addEventListener("click", onAddToCartButtonClick);
     
         return productCard;
     }
@@ -506,7 +506,7 @@ function handleLogin(foundUser) {
     })
     .then(response => response.json())
     .then(data => {
-        alert(`Welcome back, ${foundUser.username}!`);
+        alert(`Welcome, ${foundUser.username}!`);
         user.textContent = `${foundUser.username}`;
         user.style.pointerEvents = 'none';
 
@@ -667,6 +667,9 @@ async function signout() {
         if (response.ok) {
             loginItem.style.pointerEvents= 'auto';
             loginItem.textContent = 'Login | Sign Up';
+            const signOut =document.getElementById('sign-out');
+            signOut.style.display= 'none';
+       ;
         } else {
           console.log ('fail')
         }
@@ -822,7 +825,13 @@ function updateCartContent(cartItems) {
         const checkoutButton = document.createElement('button');
         checkoutButton.id = 'checkout';
         checkoutButton.textContent = 'Proceed to Checkout';
-        checkoutButton.addEventListener('click', handleCheckout);
+        checkoutButton.addEventListener('click', () => {
+            if (loginItem.textContent === 'Login | Sign Up') {
+                alert('Please Login in');
+            } else {
+                handleCheckout();
+            }
+        });
         cartContainer.appendChild(checkoutButton);
     } else {
         const emptyCartMessage = document.createElement('p');
@@ -889,8 +898,179 @@ async function handleRemoveFromCart(productId) {
 
 
 function handleCheckout() {
+    const productContainer = document.getElementById("product-listings");
+    productContainer.innerHTML = '';
+
+    const paymentForm = document.createElement('form');
+    paymentForm.id = 'paymentForm';
     
+    const cardNumberLabel = document.createElement('label');
+    cardNumberLabel.for = 'cardNumber';
+    cardNumberLabel.textContent = 'Card Number:';
+    
+    const cardNumberInput = document.createElement('input');
+    cardNumberInput.type = 'text';
+    cardNumberInput.id = 'cardNumber';
+    cardNumberInput.name = 'cardNumber';
+    cardNumberInput.placeholder = '1234 5678 9012 3456';
+    cardNumberInput.required = true;
+    
+    const cardHolderLabel = document.createElement('label');
+    cardHolderLabel.for = 'cardHolder';
+    cardHolderLabel.textContent = 'Card Holder Name:';
+    
+    const cardHolderInput = document.createElement('input');
+    cardHolderInput.type = 'text';
+    cardHolderInput.id = 'cardHolder';
+    cardHolderInput.name = 'cardHolder';
+    cardHolderInput.placeholder = 'John Doe';
+    cardHolderInput.required = true;
+    
+    const expiryDateLabel = document.createElement('label');
+    expiryDateLabel.for = 'expiryDate';
+    expiryDateLabel.textContent = 'Expiry Date:';
+    
+    const expiryDateInput = document.createElement('input');
+    expiryDateInput.type = 'text';
+    expiryDateInput.id = 'expiryDate';
+    expiryDateInput.name = 'expiryDate';
+    expiryDateInput.placeholder = 'MM/YYYY';
+    expiryDateInput.required = true;
+    
+    const cvvLabel = document.createElement('label');
+    cvvLabel.for = 'cvv';
+    cvvLabel.textContent = 'CVV:';
+    
+    const cvvInput = document.createElement('input');
+    cvvInput.type = 'text';
+    cvvInput.id = 'cvv';
+    cvvInput.name = 'cvv';
+    cvvInput.placeholder = '123';
+    cvvInput.required = true;
+    
+    const submitButton = document.createElement('button');
+    submitButton.type = 'button';
+    submitButton.textContent = 'Submit Payment';
+    submitButton.addEventListener('click', submitPayment);
+    
+    paymentForm.appendChild(cardNumberLabel);
+    paymentForm.appendChild(cardNumberInput);
+    paymentForm.appendChild(cardHolderLabel);
+    paymentForm.appendChild(cardHolderInput);
+    paymentForm.appendChild(expiryDateLabel);
+    paymentForm.appendChild(expiryDateInput);
+    paymentForm.appendChild(cvvLabel);
+    paymentForm.appendChild(cvvInput);
+    paymentForm.appendChild(submitButton);
+
+
+    productContainer.appendChild(paymentForm);
 }
+
+function submitPayment() {
+    const cardNumber = document.getElementById('cardNumber').value;
+    const cardHolder = document.getElementById('cardHolder').value;
+    const expiryDate = document.getElementById('expiryDate').value;
+    const cvv = document.getElementById('cvv').value;
+
+    if (!cardNumber || !cardHolder || !expiryDate || !cvv) {
+        alert('Please fill in all payment details.');
+        return;
+    }
+
+    const processPaymentEndpoint = 'http://localhost:3000/checkout';
+
+    const cartEndpoint = 'http://localhost:3000/cart'; 
+
+    fetch(cartEndpoint)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to fetch cart items');
+            }
+            return response.json();
+        })
+        .then(cartItems => {
+            
+            const paymentData = {
+                cardNumber,
+                cardHolder,
+                expiryDate,
+                cvv,
+            };
+
+            const items = {
+                cart: cartItems 
+            };
+
+            return fetch(processPaymentEndpoint, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ paymentData, items }), // Combine paymentData and items into a single object
+            });
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to process payment');
+            }
+
+            alert('Payment submitted successfully!');
+            clearcart();
+            productListNavItem.click();
+
+        })
+        .catch(error => {
+            console.error('Error:', error.message);
+
+        });
+}
+
+
+async function clearcart() {
+    try {
+
+        const cartEndpoint = 'http://localhost:3000/cart'; 
+        const response = await fetch(cartEndpoint);
+
+        if (!response.ok) {
+            throw new Error('Failed to fetch cart items');
+        }
+
+        const cartItems = await response.json();
+
+        for (const cartItem of cartItems) {
+            await deleteCartItem(cartItem.id);
+        }
+
+
+        updateCartCount();
+
+    } catch (error) {
+        console.error('Error:', error.message);
+
+    }
+}
+
+
+async function deleteCartItem(itemId) {
+    const cartItemEndpoint = `http://localhost:3000/cart/${itemId}`; 
+
+    try {
+        const response = await fetch(cartItemEndpoint, {
+            method: 'DELETE',
+        });
+
+        if (!response.ok) {
+            throw new Error(`Failed to delete item with ID ${itemId}`);
+        }
+    } catch (error) {
+        console.error('Error:', error.message);
+    }
+}
+
+
+
 
 
 
