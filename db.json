@@ -1,10 +1,5 @@
 {
-  "currentUser": [
-    {
-      "username": "NatureExplorer",
-      "id": 1
-    }
-  ],
+  "currentUser": [],
   "products": [
     {
       "id": 1,

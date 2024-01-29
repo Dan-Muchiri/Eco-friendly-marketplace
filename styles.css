@@ -58,7 +58,7 @@ body {
     font-family: 'Kaushan Script', cursive;
 }
 
-#navigation ul {
+#navigation ul, #user-options {
     list-style: none;
     display: flex;
     margin: 0;
@@ -69,7 +69,7 @@ body {
     margin: 0 15px;
 }
 
-#nav-community, #nav-products, #nav-about, #login {
+#nav-community, #nav-products, #nav-about, #login, #sign-out{
     color: #fff;
     text-decoration: none;
     font-weight: bold;
@@ -77,12 +77,16 @@ body {
     transition: color 0.3s ease;
 }
 
-#nav-community:hover, #nav-products:hover, #nav-about:hover, #login:hover{
+#nav-community:hover, #nav-products:hover, #nav-about:hover, #login:hover, #sign-out:hover{
     color: #a8d1bb; 
 }
 
-#nav-community:active, #nav-about:active, #nav-products:active, #login:active {
+#nav-community:active, #nav-about:active, #nav-products:active, #login:active, #sign-out:active {
     color: #567f64; 
+}
+
+#sign-out{
+    margin-left: 10px;
 }
 
 

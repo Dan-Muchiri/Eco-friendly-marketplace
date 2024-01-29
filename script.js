@@ -509,6 +509,20 @@ function handleLogin(foundUser) {
         alert(`Welcome back, ${foundUser.username}!`);
         user.textContent = `${foundUser.username}`;
         user.style.pointerEvents = 'none';
+
+        const sign = document.getElementById('user-options');
+        const signOut =document.createElement('li');
+        signOut.id = 'sign-out';
+        signOut.textContent = 'Sign Out';
+
+        signOut.addEventListener('click', function (event) {
+            signOut.style.display = 'none';
+            event.preventDefault();  
+            signout();
+        });
+
+        sign.appendChild(signOut)
+
         productListNavItem.click();
     })
     .catch(error => {
@@ -522,21 +536,27 @@ function currentUser() {
 
     fetch(currentUserEndpoint)
         .then(response => {
-            if (response.ok) {
                 return response.json();
-            } else {
-                throw new Error("No current user");
-            }
         })
         .then(foundUser => {
-            console.log(foundUser[0])
-            if (foundUser) {
+            if (foundUser[0]) {
                 productListNavItem.click();
                 const user = document.getElementById('login');
                 user.textContent = `${foundUser[0].username}`;
-                user.style.pointerEvents = 'none';   
+                user.style.pointerEvents = 'none'; 
+                
+                const sign = document.getElementById('user-options');
+                const signOut =document.createElement('li');
+                signOut.id = 'sign-out';
+                signOut.textContent = 'Sign Out'
+
+                signOut.addEventListener('click', function (event) {
+                    event.preventDefault();  
+                    signout();
+                });
+
+        sign.appendChild(signOut)
             } else {
-                console.error("Current user is missing necessary properties");
                 productListNavItem.click();
             }
         })
@@ -545,10 +565,6 @@ function currentUser() {
             productListNavItem.click();
         });
 }
-
-
-
-
 
 function createSignupForm() {
     const container = document.getElementById('login-container');
@@ -632,16 +648,31 @@ function handleSignup(username, password) {
     .then(response => response.json())
     .then(data => {
     
-        alert(`Welcome ${data.username}!`);
-        const user = document.getElementById('login');
-        user.textContent = `${data.username}`;
-        user.style.pointerEvents = 'none';
-        productListNavItem.click();
+        handleLogin(data);
     })
     .catch(error => {
         console.error('Error during signup:', error);
         alert('Error during signup. Please try again.');
     });
+}
+
+async function signout() {
+    const currentUserEndpoint = `http://localhost:3000/currentUser/${1}`;
+
+    try {
+        const response = await fetch(currentUserEndpoint, {
+            method: 'DELETE',
+        });
+
+        if (response.ok) {
+            loginItem.style.pointerEvents= 'auto';
+            loginItem.textContent = 'Login | Sign Up';
+        } else {
+          console.log ('fail')
+        }
+    } catch (error) {
+        console.error('Error during sign-out:', error);
+    }
 }
 
 function aboutPage(){
