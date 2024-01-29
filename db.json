@@ -1,4 +1,10 @@
 {
+  "currentUser": [
+    {
+      "username": "NatureExplorer",
+      "id": 1
+    }
+  ],
   "products": [
     {
       "id": 1,
@@ -490,46 +496,5 @@
       "userIconUrl": "images/user1.png"
     }
   ],
-  "cart": [
-    {
-      "productId": 1,
-      "productName": "Upcycled Glass Bottle Vases",
-      "url": "images/bottles.jpeg",
-      "price": 18.99,
-      "quantity": 2,
-      "id": 1
-    },
-    {
-      "productId": 2,
-      "productName": "Reusable Bamboo Utensil Set",
-      "url": "images/bamboo utensils.jpeg",
-      "price": 9.99,
-      "quantity": 3,
-      "id": 2
-    },
-    {
-      "productId": 3,
-      "productName": "Organic Mango",
-      "url": "images/mango.jpeg",
-      "price": 3.99,
-      "quantity": 1,
-      "id": 3
-    },
-    {
-      "productId": 4,
-      "productName": "Solar-Powered Phone Charger",
-      "url": "images/solar charger.jpeg",
-      "price": 29.99,
-      "quantity": 1,
-      "id": 4
-    },
-    {
-      "productId": 5,
-      "productName": "Smart Thermostat",
-      "url": "images/smart thermostart.jpeg",
-      "price": 79.99,
-      "quantity": 1,
-      "id": 5
-    }
-  ]
+  "cart": []
 }

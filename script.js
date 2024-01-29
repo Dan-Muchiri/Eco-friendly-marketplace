@@ -319,9 +319,20 @@ addToCartButton.addEventListener("click", onAddToCartButtonClick);
         }
     }
     
-    function updateCartCount() {
+    async function updateCartCount() {
+        const cartEndpoint = "http://localhost:3000/cart";
+    
+    try {
+        const response = await fetch(cartEndpoint);
+        const cartItems = await response.json();
+        
+        const totalQuantity = cartItems.reduce((total, item) => total + item.quantity, 0);
+        
         const cartCountElement = document.getElementById("cart-count");
-        cartCountElement.textContent ++;
+        cartCountElement.textContent = totalQuantity;
+    } catch (error) {
+        console.error("Error updating cart count from server:", error);
+    };
     }
     
 
@@ -458,12 +469,8 @@ async function checkforUser(username, password, apiUrl) {
         if (foundUser) {
         
             if (foundUser.password === password) {
-            
-                alert(`Welcome back, ${foundUser.username}!`);
                 const user = document.getElementById('login');
-                user.textContent = `${foundUser.username}`;
-                user.style.pointerEvents = 'none';
-                productListNavItem.click();
+                handleLogin(foundUser)
                 
             } else {
             
@@ -481,6 +488,67 @@ async function checkforUser(username, password, apiUrl) {
         console.error("Error fetching data:", error);
     }
 }
+
+function handleLogin(foundUser) {
+    const user = document.getElementById('login');
+    const currentUserEndpoint = "http://localhost:3000/currentUser";
+
+    const currentUserData = {
+        username: foundUser.username,
+    };
+
+    fetch(currentUserEndpoint, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(currentUserData),
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert(`Welcome back, ${foundUser.username}!`);
+        user.textContent = `${foundUser.username}`;
+        user.style.pointerEvents = 'none';
+        productListNavItem.click();
+    })
+    .catch(error => {
+        console.error('Error updating current user:', error);
+        alert('Error during login. Please try again.');
+    });
+}
+
+function currentUser() {
+    const currentUserEndpoint = "http://localhost:3000/currentUser";
+
+    fetch(currentUserEndpoint)
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error("No current user");
+            }
+        })
+        .then(foundUser => {
+            console.log(foundUser[0])
+            if (foundUser) {
+                productListNavItem.click();
+                const user = document.getElementById('login');
+                user.textContent = `${foundUser[0].username}`;
+                user.style.pointerEvents = 'none';   
+            } else {
+                console.error("Current user is missing necessary properties");
+                productListNavItem.click();
+            }
+        })
+        .catch(error => {
+            console.error("Error checking for current user:", error);
+            productListNavItem.click();
+        });
+}
+
+
+
+
 
 function createSignupForm() {
     const container = document.getElementById('login-container');
@@ -698,7 +766,6 @@ async function fetchCartData(apiUrl) {
 }
 
 function updateCartContent(cartItems) {
-    const productContainer = document.getElementById("product-listings");
     const cartContainer = document.getElementById('cart-container');
     cartContainer.innerHTML = '';
 
@@ -756,18 +823,48 @@ function createCartItemElement(cartItem) {
 }
 
 
-function handleRemoveFromCart(productId) {
-   
+async function handleRemoveFromCart(productId) {
+    const cartItems = await fetchCartData("http://localhost:3000/cart");
+
+    const itemToRemove = cartItems.find(item => item.id === productId);
+
+    if (!itemToRemove) {
+        console.error("Item not found in the cart.");
+        return;
+    }
+
+    if (itemToRemove.quantity > 1) {
+        itemToRemove.quantity -= 1;
+
+        await fetch(`http://localhost:3000/cart/${productId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(itemToRemove),
+        });
+
+        updateCartContent(cartItems);
+        updateCartCount();
+    } else {
+        await fetch(`http://localhost:3000/cart/${productId}`, {
+            method: 'DELETE',
+        });
+
+        updateCartContent(cartItems.filter(item => item.id !== productId));
+        updateCartCount();
+    }
 }
+
 
 function handleCheckout() {
     
 }
 
 
+
+    updateCartCount();
     fetchAndDisplayCommunityData();
-
-
-    productListNavItem.click();
+    currentUser();
 });
 
