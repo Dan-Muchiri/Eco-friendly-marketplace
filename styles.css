@@ -537,17 +537,61 @@ button:hover {
 
 /* styles.css */
 
+#info-b-container {
+    background: url(images/carpenter.avif);
+    background-size: cover;
+    border-radius: 10px;
+    height: 79vh;
+    overflow-y: auto;
+}
+
+#info-container {
+    background-color: rgba(255, 255, 255, 0.7);
+    margin: 45px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+#info-container h2,
+#info-container h3,
+#info-container h4,
+#info-container h5 {
+    color: #3b6c52;
+    border-bottom: 2px solid #3b6c52;
+    padding-bottom: 5px;
+    margin-top: 20px;
+}
+
+#info-container p {
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+#info-container ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#info-container li {
+    margin-bottom: 10px;
+}
+
 #contact-info {
-    background-color: #fff;
+    background-color: #f5f5f5;
     padding: 20px;
     border-radius: 10px;
     margin: 25px;
     margin-top: 30px;
     max-height: 80vh;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 #contact-info h2 {
     color: #3b6c52;
+    border-bottom: 2px solid #3b6c52;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
 }
 
 #contact-info ul {
@@ -562,7 +606,14 @@ button:hover {
 .social-media a img {
     max-width: 30px;
     margin-right: 10px;
+    border-radius: 50%;
+    transition: transform 0.3s ease-in-out;
 }
+
+.social-media a img:hover {
+    transform: scale(1.2);
+}
+
 
 
 #cart-container {
@@ -645,8 +696,6 @@ button:hover {
     bottom: 0px;
 }
 
-/* Add these styles to your existing CSS file */
-
 /* Payment Form Styles */
 #paymentForm {
     background-color: #fff;
@@ -687,9 +736,8 @@ button:hover {
 }
 
 
-
 #new-left {
-    height: 79vh; /* Set a height */
+    height: 79vh;
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -700,8 +748,8 @@ button:hover {
 
 #community-main {
     flex: 2.5;
-    background: url('farmer1.avif');
-    background-size: cover; /* Adjust to your needs */
+    background: url('images/farmer1.avif');
+    background-size: cover; 
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -711,11 +759,12 @@ button:hover {
     overflow-y: auto;
 }
 
-#add-post, #articles-container{
+#add-post, #articles-container {
     background: #f8f8f8;
     padding: 15px;
     margin: 10px;
     border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 #post-form {
@@ -725,6 +774,7 @@ button:hover {
 
 label {
     margin-bottom: 8px;
+    color: #3b6c52;
 }
 
 input, textarea {
@@ -734,32 +784,41 @@ input, textarea {
     border-radius: 4px;
 }
 
-#articles-container h2{
+button {
+    padding: 10px;
+    background-color: #3b6c52;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #2e523b;
+}
+
+#articles-container h2 {
     color: #3b6c52;
     font-size: 18px;
     margin: 5px;
 }
 
-#article-content{
+#article-content {
     background-color: rgba(255, 255, 255, 0.7);
-    margin: 50px;
-    margin-top: 15px;
+    margin: 20px;
     padding: 20px;
     border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-#article-content p{
-    font-weight: bold;
+#article-content p {
+    font-weight: 600;
 }
 
-#welcome-header{
-    background-color: rgba(255, 255, 255, 0.6);
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-    margin-top: 15px;
-    margin-left: 10px;
-    margin-right: 10px;
+#welcome-header {
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 20px;
+    margin: 15px;
     border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }

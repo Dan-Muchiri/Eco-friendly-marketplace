@@ -695,9 +695,12 @@ function aboutPage(){
     const productContainer = document.getElementById("product-listings");
     productContainer.innerHTML = '';
 
-    const infoContainer = document.createElement('div');
-    infoContainer.id = 'info-container';
-    infoContainer.style.flex='5';
+    const infobackContainer = document.createElement('div');
+    infobackContainer.id = 'info-b-container';
+    infobackContainer.style.flex='5';
+
+    const infoContainer =document.createElement('div');
+    infoContainer.id ='info-container';
     
     infoContainer.innerHTML = `
     <h2>About Eco-Friendly Market Place</h2>
@@ -743,9 +746,9 @@ function aboutPage(){
     <p><strong>Together, let's rewrite the narrative. Let's grow a greener future, one click at a time.</strong></p>
 `;
 
+infobackContainer.appendChild(infoContainer);
 
-
-productContainer.appendChild(infoContainer);
+productContainer.appendChild(infobackContainer);
 
 const contactinfo = document.createElement('div');
 contactinfo.id='contact-info'
@@ -1248,10 +1251,6 @@ async function getArticles() {
         console.error('Error fetching articles:', error);
     }
 }
-
-
-
-
 
 
     updateCartCount();
