@@ -27,6 +27,13 @@ document.addEventListener("DOMContentLoaded", function () {
         aboutPage();
     });
 
+    const communityItem = document.getElementById('nav-community');
+
+    communityItem.addEventListener('click', function (event) {
+        event.preventDefault();  
+        communityPage();
+    });
+
     const cartItem = document.getElementById('cart');
 
     cartItem.addEventListener('click', function (event) {
@@ -776,7 +783,6 @@ function cartPage() {
     const cartContainer = document.createElement('div');
     cartContainer.id = 'cart-container';
 
-    // Fetch and display cart items
     fetchCartData("http://localhost:3000/cart")
         .then(cartItems => {
             updateCartContent(cartItems);
@@ -1066,6 +1072,180 @@ async function deleteCartItem(itemId) {
         }
     } catch (error) {
         console.error('Error:', error.message);
+    }
+}
+
+function communityPage(){
+    const leftSection = document.getElementById('left-section');
+    leftSection.style.display = 'none';
+
+    const rightSection = document.getElementById('right-section');
+    rightSection.style.display = 'none';
+
+    const productContainer = document.getElementById("product-listings");
+    productContainer.innerHTML = '';
+
+    const newleft = document.createElement('div');
+    newleft.id = 'new-left';
+
+    const addpost = document.createElement('div');
+    addpost.id = 'add-post';
+
+    const postForm = document.createElement('form');
+    postForm.id = 'post-form';
+
+    const titleLabel = document.createElement('label');
+    titleLabel.for = 'post-title';
+    titleLabel.textContent = 'Title:';
+    
+    const titleInput = document.createElement('input');
+    titleInput.type = 'text';
+    titleInput.id = 'post-title';
+    titleInput.name = 'post-title';
+    titleInput.required = true;
+
+    const contentLabel = document.createElement('label');
+    contentLabel.for = 'post-content';
+    contentLabel.textContent = 'Content:';
+    
+    const contentInput = document.createElement('textarea');
+    contentInput.id = 'post-content';
+    contentInput.name = 'post-content';
+    contentInput.rows = 4;
+    contentInput.required = true;
+
+    const submitButton = document.createElement('button');
+    submitButton.type = 'button';
+    submitButton.textContent = 'Add Post/Article';
+
+    submitButton.addEventListener('click', () => {
+        if (loginItem.textContent === 'Login | Sign Up') {
+            alert('Please Login in');
+        } else {
+            submitPost();
+        }});
+
+    postForm.appendChild(titleLabel);
+    postForm.appendChild(titleInput);
+    postForm.appendChild(contentLabel);
+    postForm.appendChild(contentInput);
+    postForm.appendChild(submitButton);
+
+    addpost.appendChild(postForm);
+
+    newleft.appendChild(addpost);
+
+    const articles = document.createElement('articles');
+    articles.id = 'articles-container';
+    getArticles();
+
+    newleft.appendChild(articles);
+
+    const communityMain = document.createElement('div');
+    communityMain.id = 'community-main';
+
+    productContainer.appendChild(newleft);
+
+    const communitywelcome =document.createElement('h2')
+    communitywelcome.id='welcome-header'
+    communitywelcome.textContent = 'Join our community by simply adding your first sustainability article or post!';
+
+    communityMain.appendChild(communitywelcome);
+
+    const articleContent =document.createElement('div')
+    articleContent.id= 'article-content';
+
+    communityMain.appendChild(articleContent);
+
+    productContainer.appendChild(communityMain);
+}
+
+async function submitPost() {
+    const titleInput = document.getElementById('post-title');
+    const contentInput = document.getElementById('post-content');
+
+    const title = titleInput.value;
+    const content = contentInput.value;
+
+    if (!title || !content) {
+        alert('Please fill in both title and content.');
+        return;
+    }
+
+    try {
+        const response = await fetch('http://localhost:3000/articles', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                title: title,
+                content: content,
+            }),
+        });
+
+        if (response.ok) {
+            alert('Post submitted successfully!');
+            getArticles(); 
+
+            titleInput.value = '';
+            contentInput.value = '';
+        } else {
+            alert('Failed to submit post. Please try again.');
+        }
+    } catch (error) {
+        console.error('Error submitting post:', error);
+        alert('An error occurred while submitting the post. Please try again.');
+    }
+}
+
+
+
+async function getArticleContent(articleId) {
+    try {
+        const response = await fetch(`http://localhost:3000/articles/${articleId}`);
+        const articleContent = await response.json();
+
+        const content = document.getElementById('article-content');
+        content.innerHTML = `
+            <h2>${articleContent.title}</h2>
+            <p>${articleContent.content}</p>
+        `;
+    } catch (error) {
+        console.error('Error fetching article content:', error);
+    }
+}
+
+async function getArticles() {
+    try {
+        const response = await fetch('http://localhost:3000/articles');
+        const articlesData = await response.json();
+
+        const articlesContainer = document.getElementById('articles-container');
+        articlesContainer.innerHTML='';
+
+        const articlesListHeader =document.createElement('h2');
+        articlesListHeader.textContent = 'Sustainability articles';
+        articlesContainer.appendChild(articlesListHeader);
+
+        const articlesList = document.createElement('ul');
+
+        articlesData.forEach((article, index) => {
+            const listItem = document.createElement('li');
+            listItem.textContent = article.title;
+
+            listItem.addEventListener('click', () => getArticleContent(article.id));
+
+            articlesList.appendChild(listItem);
+
+            if (index === 0) {
+                listItem.click();
+            }
+        });
+
+        articlesContainer.appendChild(articlesList);
+    } catch (error) {
+        console.error('Error fetching articles:', error);
     }
 }
 
