@@ -55,22 +55,6 @@ To run EcoMarkt locally, follow these steps:
    - In VSCode, navigate to the `index.html` file.
    - Right-click on the file and select "Open with Live Server" to launch the website in your default browser.
 
-## Features
-
-### 1. Sustainable Shopping
-Browse and shop a diverse range of eco-friendly products, from food to electronics, all with sustainability metrics and certification badges.
-
-### 2. Community Engagement
-Join our community to share insights, articles, and posts related to sustainability. Connect with other users, learn, and contribute to a greener future.
-
-### 3. Educational Content
-Access informative articles on environmental impact and production processes to make informed choices.
-
-### 4. Filtering and Sorting
-Use sustainability and category filters to find products that align with your values and preferences.
-
-### 5. User Reviews and Ratings
-Read reviews from other users and contribute your own to help the community make informed decisions.
 
 ## How to Use
 
