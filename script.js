@@ -757,8 +757,8 @@ contactinfo.innerHTML = `
     <h2>Contact Us</h2>
     <p>If you have any questions or need assistance, feel free to reach out to us. We are here to help!</p>
     <ul>
-        <li><strong>Email:</strong> info@ecofriendlymarketplace.com</li>
-        <li><strong>Phone:</strong> +1 (555) 123-4567</li>
+        <li><strong>Email:</strong> N/A </li>
+        <li><strong>Phone:</strong> N/A </li>
     </ul>
     <h2>Follow Us</h2>
     <p>Stay connected with us on social media for the latest updates and eco-friendly living tips.</p>

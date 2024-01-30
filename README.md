@@ -33,22 +33,22 @@ To run EcoMarkt locally, follow these steps:
      cd Eco-friendly-marketplace
      ```
 
-4. **Install JSON Server (if not installed globally):**
+4. **Open EcoMarkt in Visual Studio Code:**
+   - Use the following command to open the project in VSCode:
+     ```bash
+     code .
+     ```
+
+5. **Install JSON Server (if not installed globally):**
    - If you haven't installed JSON Server globally, run the following command:
      ```bash
      npm install -g json-server
      ```
 
-5. **Run JSON Server:**
+6. **Run JSON Server:**
    - Start the JSON Server to simulate a backend. In the terminal, run:
      ```bash
      json-server --watch db.json
-     ```
-
-6. **Open EcoMarkt in Visual Studio Code:**
-   - Use the following command to open the project in VSCode:
-     ```bash
-     code .
      ```
 
 7. **Open HTML and Run with Live Server:**
